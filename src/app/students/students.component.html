@@ -1,0 +1,87 @@
+<app-home></app-home>
+
+
+<table class="table table-dark" >
+    <thead >
+      <tr>
+        <th scope="col">Roll no</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Birth Date</th>
+        <th scope="col">Parent Name</th>
+        <th scope="col">Parent Phone</th>
+        <th scope="col">Address</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let student of students"  [class.selected]="student === selectedStudent" (click)="onSelect(student)">
+      <tr>
+        <td>{{student.rn}}</td>
+        <td>{{student.fname}}</td>
+        <td>{{student.lname}}</td>
+        <td>{{student.dob}}</td>
+        <td>{{student.parentname}}</td>
+        <td>{{student.parentphone}}</td>
+        <td>{{student.address}}</td>
+      </tr>
+        </tbody>
+  </table>
+
+
+  <div class="container">
+    <label><b>First Name</b></label>
+    <input 
+    [(ngModel)]="student.fname" type="text" placeholder="Fisrt Name" required>
+
+    <label><b>Last Name</b></label>
+    <input [(ngModel)]="student.lname" type="text" placeholder="Last Name" required>
+
+    <label><b>Birth Date</b></label>
+    <input [(ngModel)]="student.dob" type="text" placeholder="Birth Date" required>
+
+    <label><b>Parent Name</b></label>
+    <input [(ngModel)]="student.parentname" type="text" placeholder="Parent Name" required>
+
+    <label><b>Parent Phone</b></label>
+    <input [(ngModel)]="student.parentphone" type="text" placeholder="Parent Phone" required>
+
+    <label><b>Address</b></label>
+    <input [(ngModel)]="student.address" type="text" placeholder="Address" required>
+    
+
+    <button (click)="OnDetails()">Submit Details</button><br><br>
+
+    <input type="text" placeholder="Roll no" [(ngModel)]="student.rn" ><br>
+    <button (click)="removeStudent(student.rn)">Remove Student</button> <br>
+  </div>
+
+  <!-- <div>
+    <ul class="student">
+     <li *ngFor="let student of students"  [class.selected]="student === selectedStudent" (click)="onSelect(student)" >
+    <span>{{student.id}}</span> |
+    <span>{{student.name}}</span> |
+    <span>{{student.class}}</span> |
+    <span>{{student.subject}}</span> |
+    <span>{{student.schoolname}}</span>
+  </li>
+  </ul>
+  </div> -->
+
+
+  <div>
+      <div *ngIf="selectedStudent">
+        <h2>{{selectedStudent.fname | uppercase}}</h2>
+        <div><span>id: </span>{{selectedStudent.rn}}</div>
+        <div>
+          <input type="text" placeholder="Firest Name"  [(ngModel)]="selectedStudent.fname"><br> 
+          <input type="text" placeholder="Last name"  [(ngModel)]="selectedStudent.lname"><br>
+          <input type="text" placeholder="Birthdate"  [(ngModel)]="selectedStudent.dob"><br>
+          <input type="text" placeholder="Birthdate"  [(ngModel)]="selectedStudent.dob"><br>
+          <input type="text" placeholder="Parent Name"  [(ngModel)]="selectedStudent.parentname"><br>
+          <input type="text" placeholder="Parent Phone"  [(ngModel)]="selectedStudent.parentphone"><br>
+          <input type="text" placeholder="Address"  [(ngModel)]="selectedStudent.address"><br>
+        
+        </div>
+    
+      </div>
+    </div>
+
